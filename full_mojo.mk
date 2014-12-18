@@ -21,10 +21,9 @@
 # lines, full and maguro, hence its name.
 #
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 # Inherit from mojo device
 $(call inherit-product, device/madcatz/mojo/device.mk)
+$(call inherit-product, device/google/atv/products/atv_base.mk)
 
 PRODUCT_NAME := full_mojo
 PRODUCT_DEVICE := mojo

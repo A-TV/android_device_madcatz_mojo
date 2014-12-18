@@ -45,23 +45,6 @@
         <item>9,0</item>
     </string-array>
 
-    <!-- List of regexpressions describing the interface (if any) that represent tetherable
-         Wifi interfaces.  If the device doesn't want to support tethering over Wifi this
-         should be empty.  An example would be "softap.*" -->
-    <string-array translatable="false" name="config_tether_wifi_regexs">
-        <item>"wlan0"</item>
-    </string-array>
-
-    <!-- List of regexpressions describing the interface (if any) that represent tetherable
-    Bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
-    should be empty. -->
-    <string-array translatable="false" name="config_tether_bluetooth_regexs">
-        <item>"bt-pan"</item>
-    </string-array>
-
-    <!-- Enable electronBeam animation instead of fading off. -->
-    <bool name="config_animateScreenLights">false</bool>
-
     <!-- Boolean indicating whether the wifi chipset supports background scanning mechanism.
          This mechanism allows the host to remain in suspend state and the dongle to actively
          scan and wake the host when a configured SSID is detected by the dongle. This chipset
@@ -69,58 +52,31 @@
          The driver commands needed to support the feature are BGSCAN-START and BGSCAN-STOP -->
     <bool name="config_wifi_background_scan_support">true</bool>
 
-    <!-- Flag indicating whether the current device is "voice capable".
-         If true, this means that the device supports circuit-switched
-         (i.e. voice) phone calls over the telephony network, and is
-         allowed to display the in-call UI while a cellular voice call is
-         active.  This can be overridden to false for "data only" devices
-         which can't make voice calls and don't support any in-call UI.
-         Note: this flag is subtly different from the
-         PackageManager.FEATURE_TELEPHONY system feature, which is
-         available on *any* device with a telephony radio, even if the
-         device is data-only. -->
-    <bool name="config_voice_capable">false</bool>
 
-    <!-- Flag indicating whether the current device allows sms service.
-         If true, this means that the device supports both sending and
-         receiving sms via the telephony network.
-         This can be overridden to false for "data only" devices
-         which can't send and receive sms message.
-         Note: Disable SMS also disable voicemail waiting sms,
-               cell broadcasting sms, and MMS. -->
-    <bool name="config_sms_capable">false</bool>
+    <!-- Enable electronBeam animation instead of fading off. -->
+    <bool name="config_animateScreenLights">false</bool>
 
-    <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
-    <bool name="config_cellBroadcastAppLinks">false</bool>
-
-    <!-- Hardware 'face' keys present on the device, stored as a bit field.
-         This integer should equal the sum of the corresponding value for each
-         of the following keys present:
-             1 - Home
-             2 - Back
-             4 - Menu
-             8 - Assistant (search)
-            16 - App switch
-         For example, a device with Home, Back and Menu keys would set this
-         config to 7. -->
-    <integer name="config_deviceHardwareKeys">0</integer>
-
-   <!-- If true, the screen can be rotated via the accelerometer in all 4
-         rotations as the default behavior. -->
-    <bool name="config_allowAllRotations">false</bool>
-
-    <!-- Flag indicating that this device does not rotate and will always remain in its default
-         orientation. Activities that desire to run in a non-compatible orientation will be run
-         from an emulated display within the physical display. -->
-    <bool name="config_forceDefaultOrientation">true</bool>
-
-    <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
-         autodetected from the Configuration. -->
-    <bool name="config_showNavigationBar">true</bool>
+    <bool name="config_ui_enableFadingMarquee">true</bool>
 
     <!-- Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">8</integer>
     <!-- Whether UI for multi user should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
+
+    <!-- Supports MS PlayReady in Chromium WebView -->
+    <string-array name="config_keySystemUuidMapping" translatable="false">
+        <item>"x-com.microsoft.playready,9A04F079-9840-4286-AB92-E65BE0885F95"</item>
+    </string-array>
+
+    <!-- Control the behavior when the user double-taps the home button.
+            0 - Nothing
+            1 - Recent apps view in SystemUI
+         This needs to match the constants in
+         policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
+    -->
+    <integer name="config_doubleTapOnHomeBehavior">1</integer>
+
+    <!-- Apps that are authorized to access shared accounts -->
+    <string name="config_appsAuthorizedForSharedAccounts">;com.android.tv.settings;</string>
 
 </resources>

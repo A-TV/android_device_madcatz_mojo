@@ -14,12 +14,8 @@
 # limitations under the License.
 #
 
-# Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
-PRODUCT_AAPT_PREF_CONFIG := tvdpi
-
-# Bootanimation
-TARGET_BOOTANIMATION_NAME := 800
+PRODUCT_AAPT_CONFIG := normal large xlarge hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
@@ -28,6 +24,10 @@ $(call inherit-product-if-exists, vendor/madcatz/mojo/mojo-vendor.mk)
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     device/madcatz/mojo/overlay
+
+# Boot Animation
+PRODUCT_COPY_FILES += \
+    device/madcatz/mojo/bootanimation.zip:system/media/bootanimation.zip
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -41,7 +41,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
-    frameworks/native/data/etc/android.hardware.faketouch.xml:system/etc/permissions/android.hardware.faketouch.xml \
     frameworks/native/data/etc/android.hardware.hdmi.cec.xml:system/etc/permissions/android.hardware.hdmi.cec.xml \
     frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
@@ -80,8 +79,7 @@ PRODUCT_COPY_FILES += \
 
 # M.O.J.O.
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/permissions/com.nvidia.nvsi.xml:system/etc/permissions/com.nvidia.nvsi.xml \
-     $(LOCAL_PATH)/permissions/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml
+    $(LOCAL_PATH)/permissions/com.nvidia.nvsi.xml:system/etc/permissions/com.nvidia.nvsi.xml
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -94,8 +92,6 @@ PRODUCT_PACKAGES += \
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
-
-PRODUCT_CHARACTERISTICS := tablet
 
 # Adb over TCP
 PRODUCT_PROPERTY_OVERRIDES += \
