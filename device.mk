@@ -41,7 +41,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
-    frameworks/native/data/etc/android.hardware.hdmi.cec.xml:system/etc/permissions/android.hardware.hdmi.cec.xml \
     frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
@@ -56,14 +55,12 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
+    audio.r_submix.default \
     audio.usb.default
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
-
-# Hdmi CEC: mojo works as a playback device (4).
-PRODUCT_PROPERTY_OVERRIDES += ro.hdmi.device_type=4
 
 # Media config
 PRODUCT_COPY_FILES += \
@@ -78,15 +75,9 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    dhcpcd.conf \
     hostapd \
-    libnetcmdiface \
-    libwpa_client \
     wpa_supplicant \
     wpa_supplicant.conf
-
-# we have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Adb over TCP
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -97,10 +88,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
     ro.secure=0 \
     ro.debuggable=1
-
-# Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
 
 # USB
 PRODUCT_PACKAGES += \

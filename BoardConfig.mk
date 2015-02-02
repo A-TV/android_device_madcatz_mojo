@@ -31,7 +31,7 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := androidboot.selinux=disabled
 TARGET_KERNEL_SOURCE := kernel/madcatz/mojo
 TARGET_KERNEL_CONFIG := cyanogenmod_mojo_defconfig
 
@@ -46,14 +46,8 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/madcatz/mojo/bluetooth
 
-# Camera
-USE_CAMERA_STUB = true
-
 # Graphics
 USE_OPENGL_RENDERER := true
-
-# Include an expanded selection of fonts
-EXTENDED_FONT_FOOTPRINT := true
 
 # Partition
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -79,21 +73,5 @@ BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
 WIFI_DRIVER_FW_PATH_PARAM        := "/data/misc/wifi/firmware/firmware_path"
 WIFI_DRIVER_FW_PATH_AP           := "/data/misc/wifi/firmware/fw_bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_STA          := "/data/misc/wifi/firmware/fw_bcmdhd.bin"
-
-# SELINUX Defines
-#BOARD_SEPOLICY_DIRS := \
-#    device/madcatz/mojo/sepolicy
-
-#BOARD_SEPOLICY_UNION := \
-#    file_contexts \
-#    app.te \
-#    device.te \
-#    drmserver.te \
-#    init_shell.te \
-#    file.te \
-#    system.te \
-#    zygote.te \
-#    domain.te \
-#    ueventd.te
 
 MALLOC_IMPL := dlmalloc
