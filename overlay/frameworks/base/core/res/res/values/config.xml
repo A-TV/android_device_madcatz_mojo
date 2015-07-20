@@ -52,31 +52,18 @@
          The driver commands needed to support the feature are BGSCAN-START and BGSCAN-STOP -->
     <bool name="config_wifi_background_scan_support">true</bool>
 
-
-    <!-- Enable electronBeam animation instead of fading off. -->
-    <bool name="config_animateScreenLights">false</bool>
-
     <bool name="config_ui_enableFadingMarquee">true</bool>
-
-    <!-- Maximum number of supported users -->
-    <integer name="config_multiuserMaximumUsers">8</integer>
-    <!-- Whether UI for multi user should be shown -->
-    <bool name="config_enableMultiUserUI">true</bool>
 
     <!-- Supports MS PlayReady in Chromium WebView -->
     <string-array name="config_keySystemUuidMapping" translatable="false">
         <item>"x-com.microsoft.playready,9A04F079-9840-4286-AB92-E65BE0885F95"</item>
     </string-array>
 
-    <!-- Control the behavior when the user double-taps the home button.
-            0 - Nothing
-            1 - Recent apps view in SystemUI
-         This needs to match the constants in
-         policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-    -->
-    <integer name="config_doubleTapOnHomeBehavior">1</integer>
-
     <!-- Apps that are authorized to access shared accounts -->
     <string name="config_appsAuthorizedForSharedAccounts">;com.android.tv.settings;</string>
+
+    <!-- Number of times to try again with the shorter interval, before backing
+         off until the normal polling interval. A value < 0 indicates infinite. -->
+    <integer name="config_ntpRetry">-1</integer>
 
 </resources>
