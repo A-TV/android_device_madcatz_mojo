@@ -77,9 +77,11 @@ PRODUCT_COPY_FILES += \
 # Wifi
 PRODUCT_PACKAGES += \
     dhcpcd.conf \
-    hostapd \
-    wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 # Adb over TCP
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -103,5 +105,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     setup_fs
-
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
